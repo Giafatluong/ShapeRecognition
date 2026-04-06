@@ -147,6 +147,7 @@ namespace ShapeRecognition
             return false;
         }
 
+        //Thuat toan Loang
         public void CheckPatterns()
         {
             HashSet<Vector2Int> visited = new HashSet<Vector2Int>();
@@ -187,6 +188,7 @@ namespace ShapeRecognition
             }
         }
 
+        #region Square and Rectangle Check
         private void IdentifyShape(List<Vector2Int> group)
         {
             if (group.Count == 0) return;
@@ -218,7 +220,9 @@ namespace ShapeRecognition
                 IdentifyTriangle(group);
             }
         }
+        #endregion
 
+        #region Triangle Check
         private void IdentifyTriangle(List<Vector2Int> group)
         {
             if (group.Count < 2) return;
@@ -284,6 +288,7 @@ namespace ShapeRecognition
             return corners;
         }
 
+        //Thuat toan Convex Hull
         private List<Vector2> GetConvexHull(List<Vector2> points)
         {
             int n = points.Count;
@@ -317,5 +322,6 @@ namespace ShapeRecognition
                 area += (poly[j].x + poly[i].x) * (poly[j].y - poly[i].y);
             return Mathf.Abs(area) / 2f;
         }
+        #endregion
     }
 }
